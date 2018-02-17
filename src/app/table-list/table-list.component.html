@@ -1,0 +1,10 @@
+<p>
+  <button (click)="onSelect()">Hello!</button>
+</p>
+<hr>
+<div>{{ tables.length }}</div>
+<hr>
+<div *ngFor="let table of tables">
+  <a routerLink="/table/{{table.number}}">Table link {{ table.number }}</a>
+
+</div>

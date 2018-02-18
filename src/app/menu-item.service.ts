@@ -28,7 +28,7 @@ export class MenuItemService {
   }
 
   getName(itemId: string) {
-    let item = this.items.find(item => item.id === itemId);
+    const item = this.items.find(i => i.id === itemId);
     return item ? item.name : '';
   }
 

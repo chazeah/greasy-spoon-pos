@@ -12,7 +12,7 @@ import { CheckService } from './check.service';
 import { OrderedItemService } from './ordered-item.service';
 import { MenuItemService } from './menu-item.service';
 import { AppRoutingModule } from './app-routing.module';
-import { ApiAuthInterceptor } from  './api-auth';
+import { ApiAuthInterceptor } from './api-auth';
 import { CheckComponent } from './check/check.component';
 
 

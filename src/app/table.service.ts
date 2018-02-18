@@ -26,10 +26,10 @@ export class TableService {
       this.tables = this.http.get<Table[]>(this.tablesUrl).toPromise();
       this.tables.then((tables) => {
         tables.forEach((table) => {
-          let subject$ = new Subject();
+          const subject$ = new Subject();
           subject$.next(table);
           this.tablesObs$[table.id] = subject$;
-        })
+        });
       });
       return this.tables;
     }
@@ -40,7 +40,7 @@ export class TableService {
   }
 
   setCheckData$(tableId: string, check: Check) {
-    let subject$ = this.tablesObs$[tableId];
+    const subject$ = this.tablesObs$[tableId];
     subject$.next(check);
   }
 }

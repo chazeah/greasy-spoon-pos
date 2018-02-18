@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Check } from '../models/check';
-import { CheckService }  from '../check.service';
+import { CheckService } from '../check.service';
 import { OrderedItem } from '../models/ordereditem';
 import { OrderedItemService } from '../ordered-item.service';
 import { MenuItem } from '../models/menuitem';
@@ -32,8 +32,8 @@ export class CheckComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    let getCheck = this.checkService.getCheck(id).then(check => this.check = check);
-    let getMenuItems = this.menuItemService.getMenuItems();
+    const getCheck = this.checkService.getCheck(id).then(check => this.check = check);
+    const getMenuItems = this.menuItemService.getMenuItems();
     Promise.all([getCheck, getMenuItems]).then(() => this.hasLoaded = true);
   }
 
@@ -46,7 +46,7 @@ export class CheckComponent implements OnInit {
   voidItem(orderedItem: OrderedItem) {
     this.checkService.voidItemOnCheck(orderedItem, this.check).then(
       oi => {
-        let index = this.check.orderedItems.findIndex((item) => item.id === oi.id)
+        const index = this.check.orderedItems.findIndex((item) => item.id === oi.id);
         this.check.orderedItems[index] = oi;
       }
     );

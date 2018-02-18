@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Check } from '../models/check';
-import { CheckService }  from '../check.service';
+import { CheckService } from '../check.service';
 import { Table } from '../models/table';
-import { TableService }  from '../table.service';
+import { TableService } from '../table.service';
 
 @Component({
   selector: 'app-table',
@@ -33,8 +33,8 @@ export class TableComponent implements OnInit {
     });
 
     this.tableService.getCheckData$(this.table).subscribe(check => {
-      this.check = check.closed ? undefined : check
-    })
+      this.check = check.closed ? undefined : check;
+    });
   }
 
   onCreateCheck() {

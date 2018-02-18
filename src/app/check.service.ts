@@ -22,7 +22,7 @@ export class CheckService {
     return this.http.post<Check>(
       this.checksUrl,
       {
-        "tableId": table.id
+        'tableId': table.id
       }
     ).toPromise();
   }
@@ -33,8 +33,8 @@ export class CheckService {
 
   getInitialCheck(table: Table): Promise<Check> {
     return this.initialCheckData.then((checks) => {
-      return checks.find((check) => !check.closed && check.tableId === table.id)
-    })
+      return checks.find((check) => !check.closed && check.tableId === table.id);
+    });
   }
 
   getCheck(id: string): Promise<Check> {

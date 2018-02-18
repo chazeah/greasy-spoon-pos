@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Table } from '../table';
+import { Table } from '../models/table';
 import { TableService } from '../table.service';
 
 @Component({
@@ -14,12 +14,8 @@ export class TableListComponent implements OnInit {
   constructor(private tableService: TableService) { }
 
   ngOnInit() {
-    this.tableService.getTables().subscribe(
+    this.tableService.getTables().then(
       tables => this.tables = tables
     );
-  }
-
-  onSelect() {
-    console.log('hello');
   }
 }

@@ -1,3 +1,12 @@
-<p *ngIf="table">
-  {{ table.id }}
-</p>
+<div
+  *ngIf="table"
+>
+  <h2>{{ table.number }}</h2>
+
+  <div *ngIf="check">
+    <a routerLink="/check/{{ check.id }}">View check</a>
+  </div>
+  <div *ngIf="!check">
+    <button (click)="onCreateCheck()">Create check</button>
+  </div>
+</div>

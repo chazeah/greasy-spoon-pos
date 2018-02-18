@@ -1,0 +1,10 @@
+<div *ngIf="allChecks.length">
+  <h3>All Checks</h3>
+  <ul>
+    <li *ngFor="let check of allChecks">
+      <a routerLink="/check/{{ check.id }}">
+        {{ check.id }} ({{ check.closed }})
+      </a>
+    </li>
+  </ul>
+</div>

@@ -19,6 +19,7 @@ import { TableService } from '../table.service';
 export class CheckComponent implements OnInit {
 
   check: Check;
+  menuItems: MenuItem[];
   hasLoaded = false;
 
   constructor(
@@ -33,8 +34,8 @@ export class CheckComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     const getCheck = this.checkService.getCheck(id).then(check => this.check = check);
-    const getMenuItems = this.menuItemService.getMenuItems();
-    Promise.all([getCheck, getMenuItems]).then(() => this.hasLoaded = true);
+    const getItems = this.menuItemService.getMenuItems().then((items) => this.menuItems = items);
+    Promise.all([getCheck, getItems]).then(() => this.hasLoaded = true);
   }
 
   orderItem(itemId: string) {

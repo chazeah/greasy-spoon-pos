@@ -14,6 +14,7 @@ import { MenuItemService } from './menu-item.service';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiAuthInterceptor } from './api-auth';
 import { CheckComponent } from './check/check.component';
+import { CheckListComponent } from './check-list/check-list.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CheckComponent } from './check/check.component';
     AppComponent,
     TableListComponent,
     TableComponent,
-    CheckComponent
+    CheckComponent,
+    CheckListComponent
   ],
   imports: [
     BrowserModule,

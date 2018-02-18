@@ -28,7 +28,11 @@ export class CheckService {
   }
 
   getInitialTableChecks() {
-    this.initialCheckData = this.http.get<Check[]>(this.checksUrl).toPromise();
+    this.initialCheckData = this.getAllCheckData();
+  }
+
+  getAllCheckData() {
+    return this.http.get<Check[]>(this.checksUrl).toPromise();
   }
 
   getInitialCheck(table: Table): Promise<Check> {

@@ -18,9 +18,16 @@
   </ul>
 
   <div *ngIf="!check.closed">
-    <button (click)="orderItem('242b1e7c-c233-4324-8b8c-cbf43723395b')">
-      Order item
-    </button>
+    <h3>All items</h3>
+    <ul>
+      <li *ngFor="let item of menuItems">
+        {{ item.name }} ({{ item.price }})-
+        <button (click)="orderItem(item.id)">
+          Order
+        </button>
+      </li>
+    </ul>
+
     <button (click)="closeCheck()">
       Close check
     </button>

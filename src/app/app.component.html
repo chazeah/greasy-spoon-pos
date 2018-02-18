@@ -6,5 +6,15 @@
 <hr>
 <router-outlet></router-outlet>
 <hr>
-<div>More below.</div>
+<button (click)="toggleAllChecks()">
+  <span *ngIf="showingAllChecks">
+    Hide all checks
+  </span>
+  <span *ngIf="!showingAllChecks">
+    Show all checks
+  </span>
+</button>
+<div *ngIf="showingAllChecks">
+  <app-check-list></app-check-list>
+</div>
 

@@ -1,3 +1,5 @@
+import { OrderedItem } from './ordereditem';
+
 export class Check {
   id: string;
   createdBy: string;
@@ -5,6 +7,7 @@ export class Check {
   dateUpdated: string;
   tableId: string;
   closed: boolean;
+  orderedItems: Array<OrderedItem>;
   tax: number;
   tip: number;
 }

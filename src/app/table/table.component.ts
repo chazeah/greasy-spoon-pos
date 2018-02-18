@@ -28,20 +28,18 @@ export class TableComponent implements OnInit {
     this.checkService.getInitialCheck(this.table).then((check) => {
       if (check) {
         this.check = check;
+        this.tableService.setCheckData$(this.table.id, this.check);
       }
     });
+
+    this.tableService.getCheckData$(this.table).subscribe(check => {
+      this.check = check.closed ? undefined : check
+    })
   }
 
   onCreateCheck() {
-    console.log('hello');
     this.checkService.createCheck(this.table).then(
       check => this.check = check
     );
   }
-
-  //getTable(): void {
-    // const number = +this.route.snapshot.paramMap.get('number');
-    // this.tableService.getTables()
-    //   .then(tables => this.table = tables.find(table => table.number === number));
-  //}
 }

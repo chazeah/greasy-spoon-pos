@@ -9,6 +9,8 @@ import { TableListComponent } from './table-list/table-list.component';
 import { TableComponent } from './table/table.component';
 import { TableService } from './table.service';
 import { CheckService } from './check.service';
+import { OrderedItemService } from './ordered-item.service';
+import { MenuItemService } from './menu-item.service';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiAuthInterceptor } from  './api-auth';
 import { CheckComponent } from './check/check.component';
@@ -34,6 +36,8 @@ import { CheckComponent } from './check/check.component';
       multi: true
     },
     CheckService,
+    MenuItemService,
+    OrderedItemService,
     TableService
   ],
   bootstrap: [AppComponent]

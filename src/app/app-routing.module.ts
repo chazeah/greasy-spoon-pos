@@ -6,8 +6,6 @@ import { TableComponent } from './table/table.component';
 import { CheckComponent } from './check/check.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/tables', pathMatch: 'full' },
-  // { path: 'tables', component: TableListComponent },
   { path: 'check/:id', component: CheckComponent }
 ];
 

@@ -1,6 +1,37 @@
-<div *ngIf="check">
-  check works! {{ check.id }}
+<div *ngIf="hasLoaded">
+  This is {{ check.id }}
+
+  <h3>Ordered items:</h3>
+  <ul>
+    <li *ngFor="let orderedItem of check.orderedItems">
+      {{ orderedItem.id }}:
+      {{ menuItemService.getName(orderedItem.itemId) }}
+      <div *ngIf="!orderedItem.voided">
+        <button (click)="voidItem(orderedItem)">
+          Void
+        </button>
+      </div>
+      <div *ngIf="orderedItem.voided">
+          Voided
+      </div>
+    </li>
+  </ul>
+
+  <div *ngIf="!check.closed">
+    <button (click)="orderItem('242b1e7c-c233-4324-8b8c-cbf43723395b')">
+      Order item
+    </button>
+    <button (click)="closeCheck()">
+      Close check
+    </button>
+  </div>
+
+  <div *ngIf="check.closed">
+    Closed.<br>
+    {{ check.tax }} : {{ check.tip }}
+  </div>
+
   <div>
-    <a routerLink="/">Close</a>
+    <a routerLink="/">Dismiss (X)</a>
   </div>
 </div>

@@ -1,0 +1,71 @@
+/* Override bootstrap's defaults. */
+.check-background {
+  pointer-events: none;
+}
+
+.check-container {
+  max-width: 850px;
+  margin: 2rem auto 0;
+  padding: 0;
+}
+
+.check-body {
+  min-height: 300px;
+}
+
+.check-body:after {
+  align-items: center;
+  background-color: #666;
+  border-radius: 25px;
+  color: #333;
+  content: "done";
+  display: flex;
+  font-variant: all-small-caps;
+  justify-content: center;
+  left: calc(100% + 10px);
+  line-height: 1.4;
+  padding: 10px 20px 12px;
+  position: absolute;
+  top: 20px;
+}
+
+.card {
+  pointer-events: auto;
+}
+
+.card-subtitle {
+  font-size: .75rem;
+}
+
+.table-wrapper {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.summary-row td {
+  border: 0;
+  padding-top: 0;
+}
+
+.item--voided {
+  text-decoration: line-through;
+}
+
+.all-items {
+  display: grid;
+  grid-auto-rows: minmax(50px, auto);
+  grid-gap: .5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.item-button {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 100%;
+  white-space: normal;
+}

@@ -1,12 +1,18 @@
-<h1>
+<div class="app-title">
   The Greasy Spoon
-</h1>
-<hr>
-<app-table-list></app-table-list>
-<hr>
+</div>
+
+<app-table-list
+  class="table-list-root"
+></app-table-list>
+
 <router-outlet></router-outlet>
-<hr>
-<button (click)="toggleAllChecks()">
+
+<br><br><br><br><br><br>
+<button
+  class="btn btn-primary"
+  (click)="toggleAllChecks()"
+>
   <span *ngIf="showingAllChecks">
     Hide all checks
   </span>

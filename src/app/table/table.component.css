@@ -1,3 +1,32 @@
-h2 {
-  margin: 0;
+.table-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.table-name {
+  font-size: .5rem;
+  opacity: .5;
+}
+
+.table-number {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.table-button {
+  text-transform: uppercase;
+  font-variant: all-small-caps;
+}
+
+.table-timestamp {
+  font-size: 0.55rem;
+  height: 0;
+  position: relative;
+  top: -12px;
+  opacity: .5;
+  pointer-events: none;
 }

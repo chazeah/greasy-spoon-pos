@@ -1,44 +1,125 @@
-<div *ngIf="hasLoaded">
-  This is {{ check.id }}
+<a
+  class="modal-backdrop fade show"
+  routerLink="/"
+></a>
+<div class="modal d-block check-background">
+  <div class="modal-dialog check-container">
+    <div class="modal-body check-body">
+      <div *ngIf="hasLoaded" class="row">
+        <div
+          class="col-6"
+          [ngClass]="{'offset-sm-3': check.closed}"
+        >
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title mb-2">
+                Current check
+              </h5>
+              <div class="card-subtitle text-secondary mb-3">
+                Opened at {{ check.dateCreated | date:'h:mm a' }}
+              </div>
 
-  <h3>Ordered items:</h3>
-  <ul>
-    <li *ngFor="let orderedItem of check.orderedItems">
-      {{ orderedItem.id }}:
-      {{ menuItemService.getName(orderedItem.itemId) }}
-      <div *ngIf="!orderedItem.voided">
-        <button (click)="voidItem(orderedItem)">
-          Void
-        </button>
+              <div class="table-wrapper">
+                <table class="table table-sm mb-0">
+                  <tbody>
+                    <tr
+                      *ngFor="let orderedItem of check.orderedItems"
+                      [ngClass]="{'item--voided': orderedItem.voided}"
+                    >
+                      <td>
+                        {{ menuItemService.getName(orderedItem.itemId) | titlecase}}
+                      </td>
+                      <td class="text-right text-secondary">
+                        {{ menuItemService.getPrice(orderedItem.itemId) | currency }}
+                      </td>
+                      <td class="text-center">
+                        <button
+                          *ngIf="!orderedItem.voided"
+                          class="btn btn-link btn-sm text-danger"
+                          (click)="voidItem(orderedItem)"
+                        >
+                          Void item
+                        </button>
+                        <button
+                          *ngIf="orderedItem.voided"
+                          class="btn btn-sm btn-link"
+                          disabled
+                        >
+                          Voided
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td class="text-right text-secondary">
+                        Tax:
+                      </td>
+                      <td class="text-right text-secondary">
+                        {{ check.tax | currency }}
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr class="summary-row">
+                      <td class="text-right text-secondary">
+                        Tip:
+                      </td>
+                      <td class="text-right text-secondary">
+                        {{ check.tip | currency }}
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr class="summary-row">
+                      <td class="text-right text-secondary">
+                        Total:
+                      </td>
+                      <td class="text-right text-secondary">
+                        XXXX
+                      </td>
+                      <td></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+              <div
+                *ngIf="!check.closed"
+                class="mt-3"
+              >
+                <button
+                  class="btn btn-block btn-outline-primary"
+                  (click)="closeCheck()"
+                >
+                  Close check
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          *ngIf="!check.closed"
+          class="col-6"
+        >
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title mb-3">
+                Add items to check
+              </h5>
+              <ul class="list-unstyled all-items mb-0">
+                <li *ngFor="let item of menuItems">
+                  <button
+                    class="btn btn-sm btn-outline-primary item-button"
+                    (click)="orderItem(item.id)"
+                  >
+                    {{ item.name }}
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div *ngIf="orderedItem.voided">
-          Voided
-      </div>
-    </li>
-  </ul>
-
-  <div *ngIf="!check.closed">
-    <h3>All items</h3>
-    <ul>
-      <li *ngFor="let item of menuItems">
-        {{ item.name }} ({{ item.price }})-
-        <button (click)="orderItem(item.id)">
-          Order
-        </button>
-      </li>
-    </ul>
-
-    <button (click)="closeCheck()">
-      Close check
-    </button>
-  </div>
-
-  <div *ngIf="check.closed">
-    Closed.<br>
-    {{ check.tax }} : {{ check.tip }}
-  </div>
-
-  <div>
-    <a routerLink="/">Dismiss (X)</a>
+    </div>
   </div>
 </div>

@@ -1,2 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~normalize.css';
+@import '~bootstrap-css-only';
+
+html,
+body {
+  background-color: #f5f5f5;
+}
+
+/* Define container layout. */
+.set-root-maxwidth {
+  display: block;
+  max-width: 960px; /* Bootstrap's LG breakpoint. */
+}

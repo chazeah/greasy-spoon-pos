@@ -1,6 +1,8 @@
 <div
   *ngFor="let table of tables"
-  class="table-container"
+  class="card position-relative"
 >
-  <app-table [table]="table"></app-table>
+  <div class="card-body">
+    <app-table [table]="table"></app-table>
+  </div>
 </div>

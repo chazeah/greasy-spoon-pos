@@ -1,0 +1,11 @@
+.app-title {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.table-list-root {
+  display: grid;
+  grid-auto-rows: minmax(150px, auto);
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}

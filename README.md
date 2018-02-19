@@ -8,7 +8,7 @@ https://github.com/AveroLLC/check-api
 2. Enter directory: `cd greasy-spoon-pos`
 3. Install dependencies: `npm install`
 4. Install `angular-cli`: `npm install -g @angular/cli`
-  - Note: requires Node 6.9.0 or higher and NPM 3 or higher.
-  - More details available in the [Angular CLI repo](https://github.com/angular/angular-cli).
+    - Note: requires Node 6.9.0 or higher and NPM 3 or higher.
+    - More details available in the [Angular CLI repo](https://github.com/angular/angular-cli).
 5. Run `ng serve --prod` to build and run the project. It will take a minute or two.
 6. Navigate to `http://localhost:4200/` to view app.

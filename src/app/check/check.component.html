@@ -1,5 +1,5 @@
 <a
-  class="modal-backdrop fade show"
+  class="modal-backdrop"
   routerLink="/"
 ></a>
 <div class="modal d-block check-background">
@@ -11,9 +11,10 @@
           [ngClass]="{'offset-sm-3': check.closed}"
         >
           <div class="card">
+            <app-spinner *ngIf="orderingItem"></app-spinner>
             <div class="card-body">
               <h5 class="card-title mb-2">
-                Current check
+                Table {{ tableService.getNumber(check.tableId) }} current check
               </h5>
               <div class="card-subtitle text-secondary mb-3">
                 Opened at {{ check.dateCreated | date:'h:mm a' }}
@@ -22,6 +23,13 @@
               <div class="table-wrapper">
                 <table class="table table-sm mb-0">
                   <tbody>
+                    <tr *ngIf="check.orderedItems.length === 0">
+                      <td class="text-secondary">
+                        <em>No items on check</em>
+                      </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
                     <tr
                       *ngFor="let orderedItem of check.orderedItems"
                       [ngClass]="{'item--voided': orderedItem.voided}"
@@ -56,7 +64,7 @@
                         Tax:
                       </td>
                       <td class="text-right text-secondary">
-                        {{ check.tax | currency }}
+                        {{ check.tax ? (check.tax | currency) : '–––'}}
                       </td>
                       <td></td>
                     </tr>
@@ -65,7 +73,7 @@
                         Tip:
                       </td>
                       <td class="text-right text-secondary">
-                        {{ check.tip | currency }}
+                        {{ check.tip ? (check.tip | currency) : '–––' }}
                       </td>
                       <td></td>
                     </tr>
@@ -74,7 +82,7 @@
                         Total:
                       </td>
                       <td class="text-right text-secondary">
-                        XXXX
+                        {{ calcCheckTotal() | currency }}
                       </td>
                       <td></td>
                     </tr>

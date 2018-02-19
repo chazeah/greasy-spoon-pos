@@ -16,6 +16,7 @@ export class TableComponent implements OnInit {
 
   @Input() table: Table;
   check: Check;
+  creatingCheck = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,8 +39,10 @@ export class TableComponent implements OnInit {
   }
 
   onCreateCheck() {
-    this.checkService.createCheck(this.table).then(
-      check => this.check = check
-    );
+    this.creatingCheck = true;
+    this.checkService.createCheck(this.table).then(check => {
+      this.check = check;
+      this.creatingCheck = false;
+    });
   }
 }

@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ApiAuthInterceptor } from './api-auth';
 import { CheckComponent } from './check/check.component';
 import { CheckListComponent } from './check-list/check-list.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CheckListComponent } from './check-list/check-list.component';
     TableListComponent,
     TableComponent,
     CheckComponent,
-    CheckListComponent
+    CheckListComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

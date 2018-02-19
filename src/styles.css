@@ -11,3 +11,9 @@ body {
   display: block;
   max-width: 960px; /* Bootstrap's LG breakpoint. */
 }
+
+/* Animation used repeatedly. */
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}

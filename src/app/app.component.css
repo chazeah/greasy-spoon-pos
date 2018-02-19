@@ -1,6 +1,13 @@
 .app-title {
   font-size: 2rem;
   margin: 1rem 0;
+  position: relative;
+}
+
+.app-logo {
+  position: absolute;
+  right: 8px;
+  top: 14px;
 }
 
 .table-list-root {
@@ -8,4 +15,46 @@
   grid-auto-rows: minmax(150px, auto);
   grid-gap: 1rem;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.show-all-tab {
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.125);
+  border-bottom: none;
+  border-radius: .25rem;
+  width: 960px;
+  position: fixed;
+  bottom: 0;
+  top: calc(100% - 78px);
+  padding: 1.25rem;
+  margin: 0 auto;
+  transition: top .1s ease-in;
+  z-index: 10;
+}
+
+.show-all-tab--expanded {
+  top: 20px;
+}
+
+.show-all-background {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+}
+
+.show-all-button {
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 25px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.show-all-container {
+  animation: fade-in .1s .2s both;
 }

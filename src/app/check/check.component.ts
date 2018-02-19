@@ -21,6 +21,7 @@ export class CheckComponent implements OnInit {
   check: Check;
   menuItems: MenuItem[];
   hasLoaded = false;
+  orderingItem = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,12 +40,20 @@ export class CheckComponent implements OnInit {
   }
 
   orderItem(itemId: string) {
-    this.checkService.addItemToCheck(itemId, this.check).then(
-      orderedItem => this.check.orderedItems.push(orderedItem)
-    );
+    this.orderingItem = true;
+    this.checkService.addItemToCheck(itemId, this.check).then(orderedItem => {
+      this.check.orderedItems.push(orderedItem);
+      this.orderingItem = false;
+    });
   }
 
   voidItem(orderedItem: OrderedItem) {
+    const itemName = this.menuItemService.getName(orderedItem.itemId);
+    const conf = confirm(`Are you sure you want to void ${itemName}?`);
+    if (!conf) {
+      return;
+    }
+
     this.checkService.voidItemOnCheck(orderedItem, this.check).then(
       oi => {
         const index = this.check.orderedItems.findIndex((item) => item.id === oi.id);
@@ -54,11 +63,29 @@ export class CheckComponent implements OnInit {
   }
 
   closeCheck() {
+    const conf = confirm('Are you sure you want to close this check?');
+    if (!conf) {
+      return;
+    }
+
     this.checkService.markCheckAsClosed(this.check).then(
       check => {
         this.check = check;
         this.tableService.setCheckData$(check.tableId, this.check);
       }
     );
+  }
+
+  calcCheckTotal() {
+    if (!this.check.orderedItems || this.check.orderedItems.length === 0) {
+      return 0;
+    }
+
+    let total = this.check.orderedItems.reduce<number>((acc, cur) => {
+      return acc + this.menuItemService.getPrice(cur.itemId);
+    }, 0);
+    total += (this.check.tax || 0) + (this.check.tip || 0);
+
+    return total;
   }
 }

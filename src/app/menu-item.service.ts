@@ -34,7 +34,7 @@ export class MenuItemService {
 
   getPrice(itemId: string) {
     const item = this.items.find(i => i.id === itemId);
-    return item ? item.price : '';
+    return item ? item.price : 0;
   }
 
 }

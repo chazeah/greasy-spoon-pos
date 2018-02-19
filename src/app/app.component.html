@@ -1,4 +1,10 @@
 <div class="app-title">
+  <img
+    class="app-logo"
+    src="assets/logo.png"
+    height="30"
+    width="30"
+  >
   The Greasy Spoon
 </div>
 
@@ -8,19 +14,31 @@
 
 <router-outlet></router-outlet>
 
-<br><br><br><br><br><br>
-<button
-  class="btn btn-primary"
+<div
+  class="show-all-tab"
+  [ngClass]="{'show-all-tab--expanded': showingAllChecks}"
+>
+  <button
+    class="btn btn-link show-all-button"
+    (click)="toggleAllChecks()"
+  >
+    <span *ngIf="showingAllChecks">
+      Hide all checks
+    </span>
+    <span *ngIf="!showingAllChecks">
+      Show all checks
+    </span>
+  </button>
+  <div
+    class="show-all-container"
+    *ngIf="showingAllChecks"
+  >
+    <app-check-list></app-check-list>
+  </div>
+</div>
+<a
+  class="show-all-background"
+  *ngIf="showingAllChecks"
   (click)="toggleAllChecks()"
 >
-  <span *ngIf="showingAllChecks">
-    Hide all checks
-  </span>
-  <span *ngIf="!showingAllChecks">
-    Show all checks
-  </span>
-</button>
-<div *ngIf="showingAllChecks">
-  <app-check-list></app-check-list>
-</div>
-
+</a>

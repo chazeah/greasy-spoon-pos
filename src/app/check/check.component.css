@@ -1,4 +1,13 @@
 /* Override bootstrap's defaults. */
+@keyframes modal-bg-fade {
+  0%   { opacity: 0; }
+  100% { opacity: .5; }
+}
+
+.modal-backdrop {
+  animation: modal-bg-fade .2s both;
+}
+
 .check-background {
   pointer-events: none;
 }
@@ -14,10 +23,11 @@
 }
 
 .check-body:after {
+  animation: fade-in .1s .2s both;
   align-items: center;
-  background-color: #666;
+  background-color: rgba(0, 0, 0, .25);
   border-radius: 25px;
-  color: #333;
+  color: rgba(0, 0, 0, .4);
   content: "done";
   display: flex;
   font-variant: all-small-caps;
@@ -30,6 +40,7 @@
 }
 
 .card {
+  animation: fade-in .2s both;
   pointer-events: auto;
 }
 

@@ -11,6 +11,7 @@ import { Check } from './models/check';
 export class TableService {
   private tablesUrl = 'https://check-api.herokuapp.com/tables';
   private tables: Promise<Table[]>;
+  private tableObjs: Table[];
   // The typedef here is complex: {string: Subject<Table>[]}
   // Ignoring it for now.
   private tablesObs$: any = {};
@@ -25,6 +26,7 @@ export class TableService {
     } else {
       this.tables = this.http.get<Table[]>(this.tablesUrl).toPromise();
       this.tables.then((tables) => {
+        this.tableObjs = tables;
         tables.forEach((table) => {
           const subject$ = new Subject();
           subject$.next(table);
@@ -42,5 +44,10 @@ export class TableService {
   setCheckData$(tableId: string, check: Check) {
     const subject$ = this.tablesObs$[tableId];
     subject$.next(check);
+  }
+
+  getNumber(tableId: string) {
+    const item = this.tableObjs.find(i => i.id === tableId);
+    return item ? item.number : '';
   }
 }

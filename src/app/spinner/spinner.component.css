@@ -1,0 +1,39 @@
+.spinningLoader-background {
+  align-items: center;
+  background: rgba(255, 255, 255, .7);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.spinningLoader,
+.spinningLoader:after {
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+}
+.spinningLoader {
+  animation: spinningLoaderFrames 1.1s infinite linear;
+  border-bottom: 1em solid rgba(0, 0, 0, .15);
+  border-left: 1em solid rgba(0, 0, 0, .4);
+  border-right: 1em solid rgba(0, 0, 0, .15);
+  border-top: 1em solid rgba(0, 0, 0, .15);
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  transform: translateZ(0);
+}
+
+@keyframes spinningLoaderFrames {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

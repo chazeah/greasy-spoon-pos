@@ -1,0 +1,4 @@
+.all-checks-wrapper {
+  max-height: 620px;
+  overflow-y: scroll;
+}

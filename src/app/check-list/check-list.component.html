@@ -1,10 +1,44 @@
-<div *ngIf="allChecks.length">
-  <h3>All Checks</h3>
-  <ul>
-    <li *ngFor="let check of allChecks">
-      <a routerLink="/check/{{ check.id }}">
-        {{ check.id }} ({{ check.closed }})
-      </a>
-    </li>
-  </ul>
+<app-spinner *ngIf="!finishedLoading"></app-spinner>
+<div *ngIf="finishedLoading">
+  <h4 class="mb-4">
+    All Checks
+  </h4>
+  <div class="all-checks-wrapper">
+    <table class="table table-sm mb-0">
+      <thead>
+        <tr>
+          <th>
+            Check ID
+          </th>
+          <th>
+            Table
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Opened
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let check of allChecks">
+          <td>
+            <a routerLink="/check/{{ check.id }}">
+              {{ check.id }}
+            </a>
+          </td>
+          <td>
+              {{ tableService.getNumber(check.tableId) }}
+          </td>
+          <td>
+              {{ check.closed ? 'Closed' : 'Open' }}
+          </td>
+          <td>
+            {{ check.dateCreated | date:'M/d h:mm a' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

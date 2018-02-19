@@ -13,10 +13,10 @@ import { TableService } from '../table.service';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-
   @Input() table: Table;
   check: Check;
   creatingCheck = false;
+  finishedLoadingCheck = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +31,7 @@ export class TableComponent implements OnInit {
         this.check = check;
         this.tableService.setCheckData$(this.table.id, this.check);
       }
+      this.finishedLoadingCheck = true;
     });
 
     this.tableService.getCheckData$(this.table).subscribe(check => {

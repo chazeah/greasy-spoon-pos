@@ -5,25 +5,27 @@
   <div class="table-name text-secondary">TABLE</div>
   <div class="table-number">{{ table.number }}</div>
 
-  <div *ngIf="check">
-    <a
-      class="table-link"
-      routerLink="/check/{{ check.id }}"
-    ></a>
-    <div class="btn btn-lg btn-link mt-2 table-button">
-      View check
+  <div *ngIf="finishedLoadingCheck">
+    <div *ngIf="check">
+      <a
+        class="table-link"
+        routerLink="/check/{{ check.id }}"
+      ></a>
+      <div class="btn btn-lg btn-link mt-2 table-button">
+        View check
+      </div>
+      <div class="table-timestamp text-secondary">
+        {{ check.dateUpdated | date:'h:mm a' }}
+      </div>
     </div>
-    <div class="table-timestamp text-secondary">
-      {{ check.dateUpdated | date:'h:mm a' }}
-    </div>
-  </div>
-  <div *ngIf="!check">
-    <a
-      class="table-link"
-      (click)="onCreateCheck()"
-    ></a>
-    <div class="btn btn-lg text-success btn-link mt-2 table-button">
-      New check
+    <div *ngIf="!check">
+      <a
+        class="table-link"
+        (click)="onCreateCheck()"
+      ></a>
+      <div class="btn btn-lg text-success btn-link mt-2 table-button">
+        New check
+      </div>
     </div>
   </div>
 

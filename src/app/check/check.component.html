@@ -5,6 +5,10 @@
 <div class="modal d-block check-background">
   <div class="modal-dialog check-container">
     <div class="modal-body check-body">
+      <app-spinner
+        *ngIf="!hasLoaded"
+        class="hide-background"
+      ></app-spinner>
       <div *ngIf="hasLoaded" class="row">
         <div
           class="col-6"

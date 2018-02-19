@@ -6,8 +6,8 @@
 
 .app-logo {
   position: absolute;
-  right: 8px;
-  top: 14px;
+  left: -47px;
+  top: 9px;
 }
 
 .table-list-root {
@@ -22,13 +22,13 @@
   border: 1px solid rgba(0,0,0,.125);
   border-bottom: none;
   border-radius: .25rem;
-  width: 960px;
-  position: fixed;
   bottom: 0;
-  top: calc(100% - 78px);
-  padding: 1.25rem;
   margin: 0 auto;
+  padding: 1.25rem;
+  position: fixed;
+  top: calc(100% - 78px);
   transition: top .1s ease-in;
+  width: 960px;
   z-index: 10;
 }
 
@@ -37,22 +37,25 @@
 }
 
 .show-all-background {
-  position: fixed;
   bottom: 0;
-  top: 0;
   left: 0;
+  position: fixed;
   right: 0;
+  top: 0;
   z-index: 9;
 }
 
 .show-all-button {
-  position: absolute;
-  display: block;
-  width: 100%;
-  padding: 25px;
   bottom: 0;
+  display: block;
+  font-size: 1.25rem;
+  font-variant: all-small-caps;
   left: 0;
+  padding: 23px 0;
+  position: absolute;
   right: 0;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 .show-all-container {
